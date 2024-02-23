@@ -1,5 +1,8 @@
 class StringCalculatorTdd
   def add(string)
+    # Ensure input is a string
+    raise ArgumentError, "Input must be a string" unless string.is_a?(String)
+
     # Handle empty string case
     return 0 if string.empty?
 

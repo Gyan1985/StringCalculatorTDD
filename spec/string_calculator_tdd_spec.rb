@@ -13,5 +13,9 @@ RSpec.describe "StringCalculatorTdd" do
     it 'adds multiple numbers separated by commas' do
       expect(StringCalculatorTdd.new.add('1,2,3')).to eq(6)
     end
+
+    it "raises ArgumentError for non-string input" do
+      expect { StringCalculatorTdd.new.add(1) }.to raise_error(ArgumentError, "Input must be a string")
+    end
   end
 end
