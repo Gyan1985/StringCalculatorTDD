@@ -17,5 +17,9 @@ RSpec.describe "StringCalculatorTdd" do
     it "raises ArgumentError for non-string input" do
       expect { StringCalculatorTdd.new.add(1) }.to raise_error(ArgumentError, "Input must be a string")
     end
+
+    it "remove empty spaces b/w string and return sum of multiple numbers separated by commas" do
+      expect(StringCalculatorTdd.new.add("1 1, 1 1, 1 1")).to eq(33)
+    end
   end
 end

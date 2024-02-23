@@ -8,8 +8,7 @@ class StringCalculatorTdd
 
     # Handle multiple numbers separated by commas
     if string.include?(',')
-      numbers = string.split(',').map(&:to_i)
-      return numbers.sum
+      return string.delete(' ').split(',').map(&:to_i).sum
     end
 
     # Handle single number case
