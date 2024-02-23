@@ -1,7 +1,15 @@
 class StringCalculatorTdd
   def add(string)
+    # Handle empty string case
     return 0 if string.empty?
 
+    # Handle multiple numbers separated by commas
+    if string.include?(',')
+      numbers = string.split(',').map(&:to_i)
+      return numbers.sum
+    end
+
+    # Handle single number case
     string.to_i
   end
 end

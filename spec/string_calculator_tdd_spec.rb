@@ -9,5 +9,9 @@ RSpec.describe "StringCalculatorTdd" do
     it 'returns the single number for an input with one number' do
       expect(StringCalculatorTdd.new.add('123')).to eq(123)
     end
+
+    it 'adds multiple numbers separated by commas' do
+      expect(StringCalculatorTdd.new.add('1,2,3')).to eq(6)
+    end
   end
 end
