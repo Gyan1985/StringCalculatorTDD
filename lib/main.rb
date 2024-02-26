@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # lib/main.rb
 require_relative 'calculator'
 
@@ -5,7 +7,7 @@ class StringCalculatorTdd
   include StringCalculator::Calculator
 end
 
-if ARGV.length > 0
+if ARGV.length.positive?
   input = ARGV[0]
   puts "Calculating for: #{input}"
 
@@ -17,5 +19,5 @@ if ARGV.length > 0
     puts "Error: #{e.message}"
   end
 else
-  puts "Error: No input provided."
+  puts 'Error: No input provided.'
 end
