@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # lib/main.rb
-require_relative 'calculator'
+require_relative 'lib/calculator'
 
 class StringCalculatorTdd
   include StringCalculator::Calculator
