@@ -8,13 +8,20 @@ class StringCalculatorTdd
 
     return string.to_i if is_a_number?(string)
 
-    # Split by both commas and new lines, then map each part to integer and sum them up
-    numbers = string.delete(' ').split(/[,\n]/)
+    default_delimiter = ','
 
-    # Check if the string ends with a comma or \n, or if there are consecutive delimiters
-    raise ArgumentError, "Invalid input" if numbers.any?(&:empty?)
+    if string.start_with?("//")
+      delimiter_declaration, numbers = string.split("\n", 2)
+      custom_delimiter = delimiter_declaration[2..-1]
+    else
+      numbers = string
+    end
 
-    numbers.map(&:to_i).sum
+    splitted_numbers = split_numbers(numbers, custom_delimiter || default_delimiter)
+
+    raise ArgumentError, "Invalid input" if splitted_numbers.any?(&:empty?)
+
+    splitted_numbers.map(&:to_i).sum
   end
 
   private
@@ -26,6 +33,10 @@ class StringCalculatorTdd
     rescue ArgumentError
       false
     end
+  end
+
+  def split_numbers(numbers, delimiter)
+    numbers.delete(' ').split(/#{Regexp.escape(delimiter)}|,|\n/)
   end
 end
 

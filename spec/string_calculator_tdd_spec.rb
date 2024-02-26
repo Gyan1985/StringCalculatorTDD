@@ -33,5 +33,25 @@ RSpec.describe "StringCalculatorTdd" do
     it "raises ArgumentError for invalid input with new line followed by comma" do
       expect { StringCalculatorTdd.new.add("1,\n2") }.to raise_error(ArgumentError)
     end
+
+    it "change delimiter at the beginning of the string" do
+      expect(StringCalculatorTdd.new.add("//;\n1;2")).to eq(3)
+    end
+
+    it "change delimiter with new lines" do
+      expect(StringCalculatorTdd.new.add("//*\n1\n2*3\n4")).to eq(10)
+    end
+
+    it "change delimiter with mixed delimiters" do
+      expect(StringCalculatorTdd.new.add("//#\n1\n2,3\n4#5")).to eq(15)
+    end
+
+    it "change delimiter with different numbers" do
+      expect(StringCalculatorTdd.new.add("//;\n1;2;3")).to eq(6)
+    end
+
+    it "raises ArgumentError for invalid input with custom delimiter" do
+      expect { StringCalculatorTdd.new.add("//;\n1;\n1") }.to raise_error(ArgumentError)
+    end
   end
 end
