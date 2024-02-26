@@ -21,6 +21,13 @@ class StringCalculatorTdd
 
     raise ArgumentError, "Invalid input" if splitted_numbers.any?(&:empty?)
 
+    # Check for negative numbers and raise an exception if found
+    negatives = splitted_numbers.select { |num| num.to_i.negative? }
+
+    if negatives.any?
+      raise ArgumentError, "Negative numbers not allowed: #{negatives.join(', ')}"
+    end
+
     splitted_numbers.map(&:to_i).sum
   end
 
