@@ -21,5 +21,17 @@ RSpec.describe "StringCalculatorTdd" do
     it "remove empty spaces b/w string and return sum of multiple numbers separated by commas" do
       expect(StringCalculatorTdd.new.add("1 1, 1 1, 1 1")).to eq(33)
     end
+
+    it 'handles newlines as delimiters' do
+      expect(StringCalculatorTdd.new.add("1\n2,3")).to eq(6)
+    end
+
+    it "raises ArgumentError for invalid input with comma followed by new line" do
+      expect { StringCalculatorTdd.new.add("1,\n2") }.to raise_error(ArgumentError)
+    end
+
+    it "raises ArgumentError for invalid input with new line followed by comma" do
+      expect { StringCalculatorTdd.new.add("1,\n2") }.to raise_error(ArgumentError)
+    end
   end
 end
