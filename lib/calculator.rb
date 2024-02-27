@@ -16,6 +16,7 @@ module StringCalculator
     private
 
     def extract_numbers(string)
+      string = string.gsub('\\n', "\n")
       if string.start_with?('//')
         delimiter_declaration, numbers = string.split("\n", 2)
         custom_delimiter = delimiter_declaration[2..]
