@@ -22,6 +22,19 @@ git clone https://github.com/Gyan1985/StringCalculatorTDD.git
 
 ```
 
+## Setup
+#### Install dependencies
+```bundle install
+```
+
+#### To run test cases
+```rspec
+```
+
+#### For linter
+```rubocop
+```
+
 ## Run the application
 
 #### Input : Empty string
